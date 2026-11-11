@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity
             num1Text.setText(String.valueOf(number));
         });
 
+//        viewModel.getNum1().observe(this, num1 -> num1Text.setText(String.valueOf(num1)));
+
         // הרשמה לשינויים במספר השני
 
         viewModel.getNum2().observe(this, number -> {
@@ -73,8 +76,11 @@ public class MainActivity extends AppCompatActivity
 
         viewModel.getAnswerCorrect().observe(this, correct -> {
 
-            if (correct == null)
+            if (correct == null) { // new question
+                answerBox.setText("");
                 return;
+
+            }
 
             if (correct) {
                 Toast.makeText(this,

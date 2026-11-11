@@ -48,6 +48,7 @@ public class MathViewModel extends ViewModel {
 
     public LiveData<Integer> getWrongCount() {
         return wrongCount;
+        // bla bla bla
     }
 
     // החלפת סוג המשחק
@@ -96,6 +97,7 @@ public class MathViewModel extends ViewModel {
             correctCount.setValue(
                     correctCount.getValue() + 1
             );
+            generateQuestion();
         } else {
             wrongCount.setValue(
                     wrongCount.getValue() + 1
